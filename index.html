@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wambie ❤️ Coffee Date</title>
+<style>
+*{box-sizing:border-box}body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;font-family:Arial,sans-serif;background:linear-gradient(135deg,#fff0f5,#fff8ed);color:#2d2222;overflow:hidden}
+.card{width:min(92%,430px);padding:34px 24px;text-align:center;background:#fff;border-radius:28px;box-shadow:0 18px 60px #0002;position:relative;z-index:2}
+.cup{font-size:54px}h1{margin:10px 0;font-size:30px}p{line-height:1.55;color:#6b5c5c}
+.info{background:#fff4e8;border-radius:18px;padding:16px;margin:20px 0;line-height:1.9}
+.buttons{display:grid;gap:12px}.day{border:0;border-radius:17px;padding:16px;background:#2f2525;color:#fff;font-size:17px;font-weight:bold;cursor:pointer}.day span{display:block;font-size:13px;font-weight:normal;opacity:.8;margin-top:5px}
+#confirm{display:none}.confirm{border:0;border-radius:17px;padding:15px 24px;background:#e85d75;color:white;font-size:17px;font-weight:bold;cursor:pointer}
+.heart{position:fixed;bottom:-30px;animation:up 6s linear forwards;font-size:20px}@keyframes up{to{transform:translateY(-110vh) rotate(25deg);opacity:0}}
+</style>
+</head>
+<body>
+<div class="card">
+<div class="cup">☕❤️</div>
+<h1>A little invitation, Wambie...</h1>
+<p>I have a small plan for us. Nothing complicated — just coffee, good vibes and some time together. 😊</p>
+<div class="info">☕ <b>Coffee date</b><br>🕔 Around <b>5:00 PM</b><br>📍 </div>
+<p><b>Which day works better for you?</b></p>
+<div class="buttons" id="buttons">
+<button class="day" onclick="pick('Tomorrow','Saturday, October 3')">Tomorrow ❤️<span>Saturday, October 3 · 5:00 PM</span></button>
+<button class="day" onclick="pick('Sunday','Sunday, October 4')">Sunday ☕<span>Sunday, October 4 · 5:00 PM</span></button>
+</div>
+<div id="confirm">
+<h2 id="title"></h2>
+<p id="chosen"></p>
+<button class="confirm" onclick="whatsapp()">Confirm ❤️</button>
+<p style="font-size:13px">Tap confirm to send your choice on WhatsApp.</p>
+</div>
+</div>
+<script>
+let selected='';
+function pick(day,date){
+selected=day+' — '+date+' at 5:00 PM';
+document.getElementById('buttons').style.display='none';
+document.getElementById('confirm').style.display='block';
+document.getElementById('title').innerHTML=day+' it is 😌❤️';
+document.getElementById('chosen').innerHTML='☕ Coffee date<br>🕔 '+date+' around 5:00 PM<br><br>Looking forward to seeing you, Wambie ❤️';
+for(let i=0;i<20;i++){let h=document.createElement('div');h.className='heart';h.textContent=['❤️','💕','✨','☕'][Math.floor(Math.random()*4)];h.style.left=Math.random()*100+'vw';h.style.animationDelay=Math.random()*1.2+'s';document.body.appendChild(h);setTimeout(()=>h.remove(),6500)}
+}
+function whatsapp(){
+let msg='Hey 😊 I choose '+selected+'. See you then ❤️☕';
+window.location.href='https://wa.me/?text='+encodeURIComponent(msg);
+}
+</script>
+</body>
+</html>
